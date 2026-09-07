@@ -204,11 +204,11 @@ const getAttributes = async (query) => {
     Attribute.find(filter)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       )
       .sort({
         createdAt: -1,
@@ -253,11 +253,11 @@ const getAttributeById = async (id) => {
     await Attribute.findById(id)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       );
 
   if (!attribute) {

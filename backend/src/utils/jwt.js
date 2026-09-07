@@ -1,23 +1,27 @@
 const jwt = require("jsonwebtoken");
 
+const getJwtSecret = () => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("JWT_SECRET environment variable is not defined");
+  }
+  return secret;
+};
+
 const generateToken = (userId) => {
   return jwt.sign(
     {
       userId: userId.toString(),
     },
-    process.env.JWT_SECRET,
+    getJwtSecret(),
     {
-      expiresIn:
-        process.env.JWT_EXPIRES_IN || "7d",
+      expiresIn: process.env.JWT_EXPIRES_IN || "7d",
     }
   );
 };
 
 const verifyToken = (token) => {
-  return jwt.verify(
-    token,
-    process.env.JWT_SECRET
-  );
+  return jwt.verify(token, getJwtSecret());
 };
 
 module.exports = {

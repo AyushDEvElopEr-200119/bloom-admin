@@ -238,11 +238,11 @@ const getWarehouses = async (query) => {
     Warehouse.find(filter)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       )
       .sort({
         createdAt: -1,
@@ -287,11 +287,11 @@ const getWarehouseById = async (id) => {
     await Warehouse.findById(id)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       );
 
   if (!warehouse) {

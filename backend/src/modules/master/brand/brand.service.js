@@ -134,11 +134,11 @@ const getBrands = async (query) => {
       Brand.find(filter)
         .populate(
           "createdBy",
-          "name email"
+          "firstName lastName email"
         )
         .populate(
           "updatedBy",
-          "name email"
+          "firstName lastName email"
         )
         .sort({
           createdAt: -1,
@@ -179,11 +179,11 @@ const getBrandById = async (id) => {
   const brand = await Brand.findById(id)
     .populate(
       "createdBy",
-      "name email"
+      "firstName lastName email"
     )
     .populate(
       "updatedBy",
-      "name email"
+      "firstName lastName email"
     );
 
   if (!brand) {

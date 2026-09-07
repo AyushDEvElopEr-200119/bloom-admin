@@ -37,6 +37,10 @@ const warehouseRoutes = require(
   "./modules/master/warehouse/warehouse.routes"
 );
 
+const attributeRoutes = require(
+  "./modules/master/attribute/attribute.routes"
+);
+
 // -----------------------------------------
 // Product Routes
 // -----------------------------------------
@@ -184,6 +188,15 @@ app.use(
 app.use(
   "/api/admin/master/warehouses",
   warehouseRoutes
+);
+
+// -----------------------------------------
+// Attribute
+// -----------------------------------------
+
+app.use(
+  "/api/admin/master/attributes",
+  attributeRoutes
 );
 
 // =========================================

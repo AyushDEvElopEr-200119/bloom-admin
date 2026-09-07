@@ -249,6 +249,38 @@ const permissions = [
   },
 
   // -----------------------------------------
+  // Attributes
+  // -----------------------------------------
+
+  {
+    name: "attributes.create",
+    resource: "attributes",
+    action: "create",
+    description: "Create attributes",
+  },
+
+  {
+    name: "attributes.read",
+    resource: "attributes",
+    action: "read",
+    description: "View attributes",
+  },
+
+  {
+    name: "attributes.update",
+    resource: "attributes",
+    action: "update",
+    description: "Update attributes",
+  },
+
+  {
+    name: "attributes.delete",
+    resource: "attributes",
+    action: "delete",
+    description: "Delete attributes",
+  },
+
+  // -----------------------------------------
   // Orders
   // -----------------------------------------
 
@@ -566,6 +598,7 @@ const seedDatabase = async () => {
       "units.read",
       "taxes.read",
       "warehouses.read",
+      "attributes.read",
 
       "cms.create",
       "cms.read",

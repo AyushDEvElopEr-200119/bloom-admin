@@ -12,12 +12,16 @@ const authorize = (...requiredPermissions) => {
       return next();
     }
 
-    const userPermissions = req.user.role.permissions.map(
-      (permission) => permission.name
+    const rolePermissions = Array.isArray(req.user.role.permissions)
+      ? req.user.role.permissions
+      : [];
+
+    const userPermissions = rolePermissions.map((permission) =>
+      typeof permission === "string" ? permission : permission.name
     );
 
-    const hasPermission = requiredPermissions.every(
-      (permission) => userPermissions.includes(permission)
+    const hasPermission = requiredPermissions.every((permission) =>
+      userPermissions.includes(permission)
     );
 
     if (!hasPermission) {

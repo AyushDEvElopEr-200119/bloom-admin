@@ -36,18 +36,24 @@ const protect = async (req, res, next) => {
 
     const decoded = verifyToken(token);
 
+    if (!decoded || !decoded.userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid or expired token",
+      });
+    }
+
     // ---------------------------------------
     // Find user and populate role + permissions
+    // Note: Do NOT select +password to avoid leaking hash
     // ---------------------------------------
 
-    const user = await User.findById(decoded.userId)
-      .populate({
-        path: "role",
-        populate: {
-          path: "permissions",
-        },
-      })
-      .select("+password");
+    const user = await User.findById(decoded.userId).populate({
+      path: "role",
+      populate: {
+        path: "permissions",
+      },
+    });
 
     // ---------------------------------------
     // User not found
@@ -83,7 +89,7 @@ const protect = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error("AUTH ERROR:", error);
+    console.error("AUTH ERROR:", error.message);
 
     return res.status(401).json({
       success: false,
