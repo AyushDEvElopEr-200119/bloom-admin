@@ -13,6 +13,10 @@ const options = {
 
     servers: [
       {
+        url: "https://api.subupee.com",
+        description: "Production server",
+      },
+      {
         url: "http://localhost:5000",
         description: "Local development server",
       },
@@ -34,6 +38,7 @@ const options = {
 
         LoginRequest: {
           type: "object",
+
           required: ["email", "password"],
 
           properties: {
@@ -71,8 +76,7 @@ const options = {
               properties: {
                 token: {
                   type: "string",
-                  example:
-                    "eyJhbGciOiJIUzI1NiIs...",
+                  example: "eyJhbGciOiJIUzI1NiIs...",
                 },
 
                 user: {
@@ -95,8 +99,7 @@ const options = {
 
                     email: {
                       type: "string",
-                      example:
-                        "admin@bloom-ecommerce.com",
+                      example: "admin@bloom-ecommerce.com",
                     },
 
                     role: {
@@ -149,10 +152,7 @@ const options = {
 
             status: {
               type: "string",
-              enum: [
-                "active",
-                "inactive",
-              ],
+              enum: ["active", "inactive"],
               example: "active",
             },
 
@@ -171,10 +171,7 @@ const options = {
         CategoryCreateRequest: {
           type: "object",
 
-          required: [
-            "categoryCode",
-            "categoryName",
-          ],
+          required: ["categoryCode", "categoryName"],
 
           properties: {
             categoryCode: {
@@ -195,10 +192,7 @@ const options = {
 
             status: {
               type: "string",
-              enum: [
-                "active",
-                "inactive",
-              ],
+              enum: ["active", "inactive"],
               example: "active",
             },
           },
@@ -226,10 +220,7 @@ const options = {
 
             status: {
               type: "string",
-              enum: [
-                "active",
-                "inactive",
-              ],
+              enum: ["active", "inactive"],
               example: "active",
             },
           },
@@ -243,10 +234,7 @@ const options = {
           properties: {
             status: {
               type: "string",
-              enum: [
-                "active",
-                "inactive",
-              ],
+              enum: ["active", "inactive"],
               example: "inactive",
             },
           },
@@ -261,7 +249,6 @@ const options = {
   ],
 };
 
-const swaggerSpec =
-  swaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options);
 
 module.exports = swaggerSpec;
