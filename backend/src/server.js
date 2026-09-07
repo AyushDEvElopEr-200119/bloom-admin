@@ -3,31 +3,18 @@ require("dotenv").config();
 const app = require("./app");
 const connectDB = require("./config/db");
 
-const PORT =
-  process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   try {
     await connectDB();
 
-    app.listen(
-      PORT,
-      () => {
-        console.log(
-          `Server running on http://localhost:${PORT}`
-        );
-
-        console.log(
-          `Swagger running on http://localhost:${PORT}/api-docs`
-        );
-      }
-    );
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
+      console.log(`Swagger available at /api-docs`);
+    });
   } catch (error) {
-    console.error(
-      "Server startup failed:",
-      error.message
-    );
-
+    console.error("Server startup failed:", error.message);
     process.exit(1);
   }
 };
