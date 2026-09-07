@@ -11,7 +11,7 @@ const startServer = async () => {
 
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on port ${PORT}`);
-      console.log(`Swagger available at /api-docs`);
+      console.log(`Swagger documentation available at /api-docs`);
     });
   } catch (error) {
     console.error("Server startup failed:", error.message);

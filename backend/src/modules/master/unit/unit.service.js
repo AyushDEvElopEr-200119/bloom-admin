@@ -157,11 +157,11 @@ const getUnits = async (query) => {
     Unit.find(filter)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       )
       .sort({
         createdAt: -1,
@@ -202,11 +202,11 @@ const getUnitById = async (id) => {
   const unit = await Unit.findById(id)
     .populate(
       "createdBy",
-      "name email"
+      "firstName lastName email"
     )
     .populate(
       "updatedBy",
-      "name email"
+      "firstName lastName email"
     );
 
   if (!unit) {

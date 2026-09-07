@@ -871,11 +871,11 @@ const getProducts = async (
       )
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       )
       .sort({
         createdAt: -1,
@@ -954,11 +954,11 @@ const getProductById = async (
       )
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       );
 
   if (!product) {

@@ -146,11 +146,11 @@ const getTaxes = async (query) => {
     Tax.find(filter)
       .populate(
         "createdBy",
-        "name email"
+        "firstName lastName email"
       )
       .populate(
         "updatedBy",
-        "name email"
+        "firstName lastName email"
       )
       .sort({
         createdAt: -1,
@@ -191,11 +191,11 @@ const getTaxById = async (id) => {
   const tax = await Tax.findById(id)
     .populate(
       "createdBy",
-      "name email"
+      "firstName lastName email"
     )
     .populate(
       "updatedBy",
-      "name email"
+      "firstName lastName email"
     );
 
   if (!tax) {
